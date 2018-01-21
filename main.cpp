@@ -15,10 +15,12 @@
 #include "Display.hpp"
 
 Display display;
+Sprite testSprite;
 
 int main(int argc, char *argv[])
 {
     display.init(640, 480, "Hello SDL!");
+    testSprite.loadImage("businessman.png");
     
     // TODO - decide where to put poll events, etc...
     // probably a Game class
@@ -30,6 +32,10 @@ int main(int argc, char *argv[])
         {
             if(event.type == SDL_QUIT) quit = true;
         }
+        
+        display.clear();
+        
+        display.drawSprite(testSprite);
         
         display.update();
     }

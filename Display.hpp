@@ -6,6 +6,8 @@
 #include <cstdio>
 #include <cstdlib>
 
+#include "Sprite.hpp"
+
 #ifndef DISPLAY_H_INCLUDED
 #define DISPLAY_H_INCLUDED
 
@@ -19,8 +21,14 @@ public:
     // create the game window
     bool init(const int w, const int h, const std::string &title);
     
-    // clear the screen and delay
+    // update the screen and delay
     bool update(void);
+    
+    // blit the given sprite to our surface
+    bool drawSprite(Sprite &s);
+    
+    // clear the window surface
+    void clear(void);
     
 private:
     SDL_Window  *m_Window       = NULL;

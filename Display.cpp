@@ -72,10 +72,15 @@ bool Display::init(const int w, const int h, const std::string &title)
     return true;
 }
 
-// clear the screen and delay
-bool Display::update(void)
+// clear the window surface
+void Display::clear(void)
 {
     SDL_FillRect(m_WinSurface, NULL, SDL_MapRGB(m_WinSurface->format, 0,0,0));
+}
+
+// update the screen and delay
+bool Display::update(void)
+{
     
     SDL_UpdateWindowSurface(m_Window);
     
@@ -83,4 +88,15 @@ bool Display::update(void)
     SDL_Delay(1000.0f / 60.0f);
     
     return true;
+}
+
+// blit the given sprite to our surface
+bool Display::drawSprite(Sprite &s)
+{
+    bool status = true;
+    if(SDL_BlitSurface(s.getSurface(), s.getClipRect(), m_WinSurface, s.getPosRect()) != 0) {
+        fprintf(stderr, "Failed to blit surface: %s\n", SDL_GetError());
+        status = false;
+    }
+    return status;
 }
