@@ -3,4 +3,4 @@ Debug
 *.mk
 *.txt
 compile.sh
-
+main
