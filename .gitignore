@@ -2,3 +2,5 @@ Debug
 *.project
 *.mk
 *.txt
+compile.sh
+
